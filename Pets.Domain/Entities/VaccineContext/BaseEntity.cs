@@ -1,14 +1,21 @@
 using System;
+using System.Collections.Generic;
+using Pets.Domain.Notifications;
+using Pets.Domain.Validations.Interfaces;
 
 namespace Pets.Domain.Entities.VaccineContext
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity : IValidations
     {
+        private List<Notification> _notifications;
+        public IReadOnlyCollection<Notification> Notifications => _notifications;
+
         public BaseEntity(string description)
         {
             Id = Guid.NewGuid();
             CreatedDate = DateTime.UtcNow;
             Description = description;
+            
         }
         public Guid Id { get; private set; }
         public string Description { get; private set; }
@@ -16,6 +23,11 @@ namespace Pets.Domain.Entities.VaccineContext
         public virtual void SetDescription(string description)
         {
             Description = description;
+        }
+        public abstract bool Validation();
+        protected void SetNotificationsList(List<Notification> notifications)
+        {
+            _notifications = notifications;
         }
     }
 }
