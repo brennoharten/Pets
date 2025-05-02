@@ -7,7 +7,7 @@ namespace Pets.Domain.Entities.PetContext
 {
     public class Owner : BaseEntity, IContract
     {
-        public Owner(Name name,string email, Document document, string documentType) : base(name)
+        public Owner(Name name, string email, Document document) : base(name)
         {
             Email = email;
             Document = document;
@@ -27,6 +27,8 @@ namespace Pets.Domain.Entities.PetContext
                 .LastNameIsOK(this.Name, 5, 20, "first name must be between 5 and 20 characters long.", "LastName")
                 .EmailIsOk(this.Email, "email is not valid.", "Email")
                 .DocumentIsOk(this.Document, "document is not valid.", "Document");
+
+            this.SetNotification(contracts.Notifications);
 
             return contracts.IsValid();
         }

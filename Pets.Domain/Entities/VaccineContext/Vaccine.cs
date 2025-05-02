@@ -28,6 +28,8 @@ namespace Pets.Domain.Entities.VaccineContext
                 .IsGuidOk(this.CategoryId, "category id is not valid.", "CategoryId")
                 .IsGuidOk(this.PetId, "category id is not valid.", "PetId");
 
+            this.SetNotification(contracts.Notifications);
+
             return contracts.IsValid();
         }
     }

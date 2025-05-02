@@ -15,6 +15,10 @@ namespace Pets.Domain.Validations
             _notifications = new List<Notification>();
         }
         public IReadOnlyCollection<Notification> Notifications => _notifications;
+        public IReadOnlyCollection<Notification> ExportNotifications()
+        {
+            return _notifications.AsReadOnly();
+        }
         public void AddNotification(Notification notification)
         {
             _notifications.Add(notification);

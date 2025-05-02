@@ -19,11 +19,11 @@ namespace Pets.Domain.Entities.PetContext
         public Name Name { get; private set; }
         public DateTime CreatedDate { get; private set; }
         public IReadOnlyCollection<Notification> Notifications => _notifications;
-        protected void SetNotification(List<Notification> notifications)
+        protected void SetNotification(IReadOnlyCollection<Notification>notifications)
         {
-            _notifications = notifications;
+            _notifications = (List<Notification>)notifications;
         }
-
+        
         public abstract bool Validation();
     }
 }

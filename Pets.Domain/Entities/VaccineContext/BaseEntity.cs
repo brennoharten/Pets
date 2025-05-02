@@ -25,9 +25,9 @@ namespace Pets.Domain.Entities.VaccineContext
             Description = description;
         }
         public abstract bool Validation();
-        protected void SetNotificationsList(List<Notification> notifications)
+        protected void SetNotification(IReadOnlyCollection<Notification> notifications)
         {
-            _notifications = notifications;
+            _notifications = (List<Notification>)notifications;
         }
     }
 }

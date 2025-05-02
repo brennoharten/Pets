@@ -26,6 +26,8 @@ namespace Pets.Domain.Entities.PetContext
                 .FirstNameIsOk(this.Name, 5, 20, "first name must be between 5 and 20 characters long.", "FirstName")
                 .LastNameIsOK(this.Name, 5, 20, "first name must be between 5 and 20 characters long.", "LastName");
 
+            this.SetNotification(contracts.Notifications);
+
             return contracts.IsValid();
         }
     }

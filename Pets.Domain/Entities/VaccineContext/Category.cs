@@ -18,7 +18,9 @@ namespace Pets.Domain.Entities.VaccineContext
             var contracts = new ContractValidation<Category>()
                 .DescriptionsIsOk(this.Description, 5, 20, "description must be between 5 and 20 characters long.", "Description");
 
+            this.SetNotification(contracts.Notifications);
+
             return contracts.IsValid();
         }
     }
-}
+} 
