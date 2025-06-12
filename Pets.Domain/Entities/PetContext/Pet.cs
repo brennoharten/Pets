@@ -10,11 +10,13 @@ namespace Pets.Domain.Entities.PetContext
 {
     public class Pet : BaseEntity, IContract
     {
-        public Pet(Name name, int identifier) : base(name)
+        public Pet(Name name, int identifier, int age) : base(name)
         {
             Identifier = identifier;
+            Age = age;
         }
         public int Identifier { get; private set; }
+        public int Age { get; private set; }
 
         public void SetIdentifier(int identifier)
         {
